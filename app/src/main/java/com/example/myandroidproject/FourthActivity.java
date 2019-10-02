@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 
+import com.example.myandroidproject.R;
+
 public class FourthActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -13,7 +15,7 @@ public class FourthActivity extends AppCompatActivity {
         setContentView(R.layout.activity_fourth);
         Button fourthNextButton = findViewById(R.id.fourth_button);
         fourthNextButton.setOnClickListener(l->{
-            Intent intent = new Intent(this,FifthActivity.class);
+            Intent intent = new Intent(this, com.example.homework1.FifthActivity.class);
             startActivity(intent);
         });
     }
