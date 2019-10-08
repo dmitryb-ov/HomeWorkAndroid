@@ -3,7 +3,6 @@ package com.example.myandroidproject
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_change_password.*
 
@@ -13,8 +12,6 @@ class ChangePasswordActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_change_password)
 
-        val backButton:Button = findViewById(R.id.backButton)
-
         backButton.setOnClickListener {
             super.onBackPressed()
         }
@@ -23,7 +20,7 @@ class ChangePasswordActivity : AppCompatActivity() {
 
         okButton.setOnClickListener {
             if(et_sign_in_changePass.text.toString() == double_et_sign_in_changePass.text.toString()){
-                LoginActivity.passwordRepository.password = et_sign_in_changePass.text.toString()
+                PasswordRepository.password = et_sign_in_changePass.text.toString()
                 super.onBackPressed()
             }
             else {

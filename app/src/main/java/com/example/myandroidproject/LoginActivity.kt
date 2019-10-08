@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
-import android.widget.Button
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -20,7 +19,6 @@ class LoginActivity : AppCompatActivity() {
         val imageView: ImageView = findViewById(R.id.imageView2)
         imageView.setImageResource(R.drawable.img)
 
-        val changePasswordButton: Button = findViewById(R.id.changePasswordButton)
         changePasswordButton.setOnClickListener {
             val intent = Intent(this, ChangePasswordActivity::class.java)
             intent.putExtra("email", et_sign_in_login.text.toString())
@@ -28,29 +26,25 @@ class LoginActivity : AppCompatActivity() {
 
         }
 
-        val loginButton: Button = findViewById(R.id.loginButton)
         loginButton.setOnClickListener {
-            if (et_sign_in_pass.text.toString() == passwordRepository.password) {
-                progressBar.visibility = View.VISIBLE
+            progressBar.visibility = View.VISIBLE
+            if (et_sign_in_pass.text.toString() == PasswordRepository.password) {
 //                var b = 0
 //                while (b != 567){
 //                    b = (1..10000).random()
 //                }
-                //progressBar.visibility = View.INVISIBLE
                 Toast.makeText(this, "Successful", Toast.LENGTH_LONG).show()
-                progressBar.visibility = View.INVISIBLE
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
             } else {
-                progressBar.visibility = View.VISIBLE
 //                var b = 0
 //                while (b != 543){
 //                    b = (1..10000).random()
 //                }
                 Toast.makeText(this, "Wrong password", Toast.LENGTH_LONG).show()
                 setPasswordError()
-                progressBar.visibility = View.INVISIBLE
             }
+            progressBar.visibility = View.INVISIBLE
         }
 
         et_sign_in_pass.addTextChangedListener(object : TextWatcher {
@@ -68,10 +62,6 @@ class LoginActivity : AppCompatActivity() {
         })
 
 
-    }
-
-    object passwordRepository {
-        var password: String = "123456"
     }
 
     private fun setPasswordError() {
