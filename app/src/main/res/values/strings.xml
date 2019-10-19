@@ -1,15 +1,8 @@
 <resources>
     <string name="app_name">MyAndroidProject</string>
-    <string name="password">Password</string>
-    <string name="email">Email</string>
-    <string name="login">Login</string>
-    <string name="sign_up">Sign up</string>
-    <string name="change_password">Change Password</string>
-    <string name="newPassword">New Password</string>
-    <string name="confirmPassword">Confirm Password</string>
-    <string name="ok">Ok</string>
-    <string name="back">Back</string>
-    <string name="wrong_password">Wrong Password</string>
-    <string name="incorrect_password">Incorrect Password</string>
-    <string name="good">Good</string>
+    <string name="go_activity">Go Activity Site</string>
+    <string name="go_activity_map">Go Activity Map</string>
+    <string name="go_gallery">Go Gallery</string>
+    <string name="text">text</string>
+    <string name="send_text">Send Text</string>
 </resources>
