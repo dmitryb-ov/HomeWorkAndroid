@@ -14,6 +14,6 @@ class SecondActivity : AppCompatActivity() {
         setContentView(R.layout.activity_second)
 
         val value = intent.getStringExtra(Intent.EXTRA_TEXT)
-        textView.text = ""+value
+        textView.text = "$value"
     }
 }

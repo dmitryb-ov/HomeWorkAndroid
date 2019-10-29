@@ -4,9 +4,6 @@ import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.provider.MediaStore
-import android.util.Log
-import android.widget.ImageView
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -16,7 +13,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        button.setOnClickListener {
+        button_go_activity_site.setOnClickListener {
 
             val uri = Uri.parse("http:vk.com")
 
@@ -30,23 +27,23 @@ class MainActivity : AppCompatActivity() {
 
         }
 
-        button2.setOnClickListener {
+        button_go_activity_navigation.setOnClickListener {
             val geo:Uri = Uri.parse("geo:55.792170, 49.122234")
             val openGeo = Intent(Intent.ACTION_VIEW, geo)
             startActivityForResult(openGeo,2)
         }
 
-        button3.setOnClickListener {
+        button_go_gallery.setOnClickListener {
             val image = Intent()
             image.type = "image/*"
             image.action = Intent.ACTION_GET_CONTENT
             startActivityForResult(Intent.createChooser(image, "Pic"),3)
         }
 
-        button4.setOnClickListener {
+        button_send_text.setOnClickListener {
             val intent = Intent()
             intent.action = Intent.ACTION_SEND
-            intent.putExtra(Intent.EXTRA_TEXT, editText.text.toString())
+            intent.putExtra(Intent.EXTRA_TEXT, edit_text_field.text.toString())
             intent.type = "text/plain"
             startActivityForResult(intent, 4)
         }
@@ -58,7 +55,7 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this, "Successful", Toast.LENGTH_LONG).show()
         }
         if(requestCode == 3){
-            imageView.setImageResource(R.drawable.img)
+            image.setImageResource(R.drawable.img)
         }
     }
 }
