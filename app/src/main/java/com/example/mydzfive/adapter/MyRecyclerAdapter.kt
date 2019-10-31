@@ -36,12 +36,8 @@ class MyRecyclerAdapter(private val values: List<CitiesClass>) :
     }
 
     class ViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView!!) {
-        var textView: TextView? = null
-        var imageView: ImageView? = null
+        var textView: TextView? = itemView?.findViewById(R.id.text_list_item)
+        var imageView: ImageView? = itemView?.findViewById(R.id.recycler_image)
 
-        init {
-            textView = itemView?.findViewById(R.id.text_list_item)
-            imageView = itemView?.findViewById(R.id.recycler_image)
-        }
     }
 }
