@@ -1,8 +1,3 @@
 <resources>
-    <string name="app_name">MyAndroidProject</string>
-    <string name="go_activity">Go Activity Site</string>
-    <string name="go_activity_map">Go Activity Map</string>
-    <string name="go_gallery">Go Gallery</string>
-    <string name="text">text</string>
-    <string name="send_text">Send Text</string>
+    <string name="app_name">MyDzFive</string>
 </resources>
