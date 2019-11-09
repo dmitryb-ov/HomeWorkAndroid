@@ -21,7 +21,6 @@ class AddProductFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         button_add_product.setOnClickListener {
-            //            Log.i(TAG,"FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFff")
             activity?.supportFragmentManager.also {
                 it?.beginTransaction()?.apply {
                     setCustomAnimations(R.animator.slide_in_left, R.animator.slide_in_right)

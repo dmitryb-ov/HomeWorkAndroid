@@ -24,7 +24,6 @@ class AddInfoAboutProductFragment : Fragment() {
         button_send.setOnClickListener {
             activity?.supportFragmentManager.also {
                 it?.beginTransaction()?.apply {
-                    //                    setCustomAnimations()
                     replace(R.id.nav_host_fragment, ShowProductInfoFragment.newInstance(editText_product_name.text.toString(),
                             editText_product_type.text.toString(),
                             editText_product_cost.text.toString()))

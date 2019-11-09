@@ -68,7 +68,6 @@ class DrawerActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
     override fun onNavigationItemSelected(p0: MenuItem): Boolean {
         when (p0.itemId) {
             R.id.nav_profile -> {
-//                supportActionBar?.title =
                 supportFragmentManager.also {
                     it.beginTransaction().apply {
                         replace(R.id.nav_host_fragment, ProfileFragment.newInstance())
