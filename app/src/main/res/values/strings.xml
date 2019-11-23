@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">MyAndroidProject</string>
+    <string name="test">Test</string>
+    <string name="elements">Elements</string>
+    <string name="card">Card</string>
+    <string name="hello_my_friend">HELLO MY FRIEND</string>
+    <string name="city_name">Название города</string>
+    <string name="description">Описание</string>
+    <string name="ok">Ok</string>
+    <string name="cancel">Cancel</string>
+    <string name="number">Number</string>
+    <string name="delete">Удалить</string>
 </resources>
