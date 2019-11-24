@@ -13,7 +13,7 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="400dp"
+            android:layout_height="444dp"
             android:layout_margin="8dp">
 
             <ImageView
@@ -34,7 +34,7 @@
                 android:layout_marginBottom="20dp"
                 android:textColor="@color/colorBlack"
                 android:textStyle="bold"
-                android:textSize="16sp"
+                android:textSize="16dp"
                 android:text="TEST" />
 
             <ImageView
@@ -52,7 +52,7 @@
                 android:layout_below="@id/card_image_view"
                 android:layout_marginTop="10dp"
                 android:layout_marginStart="16dp"
-                android:textSize="12sp"
+                android:textSize="12dp"
                 android:textColor="@color/colorBlack"
                 android:text="TEST" />
         </RelativeLayout>
