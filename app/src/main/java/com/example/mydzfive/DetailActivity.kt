@@ -10,8 +10,9 @@ class DetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
 
-        city_name_text_view.text = intent.getStringExtra("cityName").toString()
+
+        city_name_text_view.text = intent?.getStringExtra("cityName").toString()
         detail_image_view.setImageResource(intent.getIntExtra("img", R.mipmap.ic_launcher))
-        description_text_view.text = intent.getStringExtra("description").toString()
+        description_text_view.text = intent?.getStringExtra("description").toString()
     }
 }

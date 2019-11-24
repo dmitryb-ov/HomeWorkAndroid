@@ -25,4 +25,5 @@ class CityHolder(override val containerView: View, private val clickLambda: (Cit
                 clickLambda
             )
     }
+
 }

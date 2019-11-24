@@ -16,6 +16,7 @@ class MyRecyclerActivity : AppCompatActivity() {
         adapter = MyRecyclerAdapter(generateCities()) { city ->
             detail(city)
         }
+
         recyclerView.adapter = adapter
     }
 
