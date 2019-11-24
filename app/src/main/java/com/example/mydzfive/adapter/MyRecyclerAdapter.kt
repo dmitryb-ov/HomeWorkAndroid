@@ -24,8 +24,8 @@ class MyRecyclerAdapter(private val values: List<CitiesClass>) :
 
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder?.textView?.text = values[position].name
-        holder?.imageView?.setImageResource(values[position].img)
+        holder.textView?.text = values[position].name
+        holder.imageView?.setImageResource(values[position].img)
         holder.itemView.setOnClickListener { v ->
             val intent = Intent(v.context, DetailActivity::class.java)
             intent.putExtra("cityName", values[position].name)
@@ -35,13 +35,8 @@ class MyRecyclerAdapter(private val values: List<CitiesClass>) :
         }
     }
 
-    class ViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView!!) {
-        var textView: TextView? = null
-        var imageView: ImageView? = null
-
-        init {
-            textView = itemView?.findViewById(R.id.text_list_item)
-            imageView = itemView?.findViewById(R.id.recycler_image)
-        }
+    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        var textView: TextView? = itemView.findViewById(R.id.text_list_item)
+        var imageView: ImageView? = itemView.findViewById(R.id.recycler_image_city)
     }
 }
