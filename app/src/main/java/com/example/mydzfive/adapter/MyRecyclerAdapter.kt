@@ -8,7 +8,8 @@ import com.example.mydzfive.CityHolder
 class MyRecyclerAdapter(
     var dataValues: List<City>,
     private val clickLambda: (City) -> Unit
-) : RecyclerView.Adapter<CityHolder>() {
+) :
+    RecyclerView.Adapter<CityHolder>() {
 
     override fun getItemCount() = dataValues.size
 
