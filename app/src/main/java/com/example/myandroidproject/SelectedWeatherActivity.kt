@@ -53,15 +53,15 @@ class SelectedWeatherActivity : AppCompatActivity(), CoroutineScope by MainScope
         val deg = degInt?.toDouble()
         if (deg != null) {
             when {
-                deg <= 22.5 -> return "Северный (С)"
-                deg <= 67.5 -> return "Северо-Западный (СЗ)"
-                deg <= 112.5 -> return "Восточный (В)"
-                deg <= 157.5 -> return "Юго-Восточный (ЮВ)"
-                deg <= 202.5 -> return "Южный (Ю)"
-                deg <= 247.5 -> return "Юго-Западный (ЮЗ)"
-                deg <= 292.5 -> return "Западный (З)"
-                deg <= 337.5 -> return "Северо-Западный (СЗ)"
-                deg <= 360 -> return "Северный (С)"
+                deg <= 22.5 -> return "С"
+                deg <= 67.5 -> return "СЗ"
+                deg <= 112.5 -> return "В"
+                deg <= 157.5 -> return "ЮВ"
+                deg <= 202.5 -> return "Ю"
+                deg <= 247.5 -> return "ЮЗ"
+                deg <= 292.5 -> return "З"
+                deg <= 337.5 -> return "СЗ"
+                deg <= 360 -> return "С"
             }
         }
         return "Нет данных"
