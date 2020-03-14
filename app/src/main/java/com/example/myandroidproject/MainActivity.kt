@@ -3,6 +3,7 @@ package com.example.myandroidproject
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
@@ -20,19 +21,21 @@ import retrofit2.HttpException
 
 class MainActivity : AppCompatActivity(), CoroutineScope by MainScope() {
 
-    private lateinit var service: WeatherService
-    private lateinit var provider: FusedLocationProviderClient
-    private var adapter: Adapter? = null
-    private var latitude: Double? = 49.12
-    private var longitude: Double? = 55.79
+    private val service: WeatherService by lazy {
+        ApiFactory.weatherService
+    }
 
+    private val provider: FusedLocationProviderClient by lazy {
+        LocationServices.getFusedLocationProviderClient(this)
+    }
+
+    private var adapter: Adapter? = null
+    private var latitude: Double? = DEFAULT_LATITUDE
+    private var longitude: Double? = DEFAULT_LONGITUDE
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        service = ApiFactory.weatherService
-        provider = LocationServices.getFusedLocationProviderClient(this)
 
         val perms = checkPermissions()
         if (!perms) {
@@ -41,41 +44,25 @@ class MainActivity : AppCompatActivity(), CoroutineScope by MainScope() {
                 android.Manifest.permission.ACCESS_COARSE_LOCATION
             }, 1)
         } else {
-//                var latitude: Double? = 49.12
-//                var longitude: Double?  = 55.79
-            provider.lastLocation.apply {
-                addOnSuccessListener { location ->
-                    if (location != null) {
-                        latitude = location.latitude
-                        longitude = location.longitude
-                    }
+            provider.lastLocation.addOnSuccessListener { location ->
+                if (location != null) {
+                    latitude = location.latitude
+                    longitude = location.longitude
                 }
             }
         }
 
         launch {
             try {
-                delay(300)
-//                if (ActivityCompat.checkSelfPermission(
-//                        this@MainActivity,
-//                        android.Manifest.permission.ACCESS_FINE_LOCATION
-//                    ) !=
-//                    PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
-//                        this@MainActivity,
-//                        android.Manifest.permission.ACCESS_COARSE_LOCATION
-//                    ) !=
-//                    PackageManager.PERMISSION_GRANTED
-//                ) {
+                delay(TIME_MILLIS)
                 val response = withContext(Dispatchers.IO) {
-                    service.weatherInCircleByCoord(latitude, longitude, 20)
+                    service.weatherInCircleByCoord(latitude, longitude, RADIUS)
                 }
-                println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
-                println("FFFFFFFFFFFFFFFFFFFFFFFFFff${response.list}")
                 recyclerView.adapter = Adapter(response.list) { weatherRes ->
                     detailWeather(weatherRes)
                 }
-            } catch (e: Exception) {
-
+            } catch (e: HttpException) {
+                Log.e("EXCEPTION", "$e.message\n${e.response().toString()}")
             }
         }
     }
@@ -83,7 +70,7 @@ class MainActivity : AppCompatActivity(), CoroutineScope by MainScope() {
     private fun detailWeather(weather: WeatherResponse) {
         val intent = Intent(this, SelectedWeatherActivity::class.java)
         intent.putExtra("cityId", weather.id)
-        intent.putExtra("color", color)
+        intent.putExtra("color", Util.setTextColorForTemp(weather.main?.temp))
         startActivity(intent)
     }
 
@@ -144,6 +131,10 @@ class MainActivity : AppCompatActivity(), CoroutineScope by MainScope() {
     }
 
     companion object {
-        var color: Int = R.color.black
+        //        var color: Int = R.color.black
+        private const val DEFAULT_LATITUDE: Double = 49.12
+        private const val DEFAULT_LONGITUDE: Double = 55.79
+        private const val TIME_MILLIS: Long = 300
+        private const val RADIUS: Int = 20
     }
 }

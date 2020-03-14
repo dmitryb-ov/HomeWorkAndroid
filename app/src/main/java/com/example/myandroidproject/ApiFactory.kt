@@ -24,6 +24,7 @@ object ApiFactory {
         val newRequest = chain.request().newBuilder().url(newUrl).build()
         chain.proceed(newRequest)
     }
+
     private val authInterceptor = Interceptor { chain ->
         // better use separate classes for Interceptors
         val newUrl = chain.request().url().newBuilder()
@@ -48,7 +49,6 @@ object ApiFactory {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
-
 
     val weatherService: WeatherService by lazy {
         retrofit.create(WeatherService::class.java)

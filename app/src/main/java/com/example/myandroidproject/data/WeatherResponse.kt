@@ -86,9 +86,9 @@ data class Wind(
     @SerializedName("deg")
     var deg: Int?,
     @SerializedName("gust")
-    var gust: Int?,
+    var gust: Double?,
     @SerializedName("speed")
-    var speed: Int?
+    var speed: Double?
 )
 
 data class WeatherInCircleByCoordRes(
